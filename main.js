@@ -14,7 +14,7 @@ class NavBar extends HTMLElement {
         a.setAttribute("class", "collection-item")
 
         a.innerHTML = `<div>${todo.id}. ${
-          todo.title
+          todo.title.toUpperCase()
         } - <span class="badge">${todo.completed
           .toString()
           .toUpperCase()}</span></div>`
@@ -27,9 +27,23 @@ class NavBar extends HTMLElement {
     fetchTodos()
 
     const template = document.querySelector("template")
-
     this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+    console.log(this.getAttribute("theme"))
+
   }
+
+  static get observedAttributes(){
+    return["theme"]
+  }
+
+  attributeChangedCallback(name, oldValue, newValue){
+
+    console.table({name, oldValue, newValue})
+
+  }
+
+
   connectedCallback() {
     console.log("Connect To The DOM")
   }

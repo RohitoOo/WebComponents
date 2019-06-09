@@ -34,32 +34,12 @@
       </div>
     </nav>
 
+    <nav-bar></nav-bar>
+
     <div class="collection">
       <main></main>
     </div>
   </body>
 
-  <script>
-    window.addEventListener("load", () => {
-      fetchTodo()
-    })
-
-    async function fetchTodo() {
-      let json = await fetch("https://jsonplaceholder.typicode.com/todos")
-      let todoList = await json.json()
-
-      const main = document.querySelector("main")
-
-      todoList.map(todo => {
-        const el = document.createElement("todo")
-
-        el.innerHTML = `<a class="collection-item">${todo.id}. ${
-          todo.title
-        } <span class="badge">${todo.completed
-          .toString()
-          .toUpperCase()}</span></a>`
-        main.appendChild(el)
-      })
-    }
-  </script>
+  <script  src="main.js" ></script>
 </html>
